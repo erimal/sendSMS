@@ -10,3 +10,6 @@ DB_SERVER = '192.168.100.8'
 DB_DATABASE = 'datalinx'
 DB_USERNAME = 'sa'
 DB_PASSWORD = 'Turniphair!30'
+
+# Log file
+LOG_FILENAME = 'log/error.log'

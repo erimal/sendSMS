@@ -1,77 +1,69 @@
-
-import smpplib
 import settings
 import dbConfig
-import json , requests
+import json
+import requests
 import pandas as pd
+import logging
+from datetime import datetime
 
 client = None
 url = 'https://api.orange.com/smsmessaging/v1/outbound/tel%3A%2B23100000000/requests'
 df = dbConfig.read_messages()
 
-# for index, row in df.iterrows():
-#     print(row['id'], row['MobileNumber'])
-# dbConfig.deliver_message('3')
+#Create an error  log file
+file_log = settings.LOG_FILENAME + "_" + (datetime.now().strftime("%Y-%m-%d"))
+
+logging.basicConfig(format='Date-Time : %(asctime)s : %(message)s',
+                    level=logging.INFO, filename=file_log, filemode='a')
+
 try:
         for index, row in df.iterrows():
-           # print(row['id'], row['MobileNumber'],row['MessageToSend'])
             phone = row['MobileNumber']
             msg = row['MessageToSend']
 
-        # first data value for JSON
-        data = {}
-        data['address'] = 'tel:+' + phone
-        data['senderName'] = 'Accessbank'
-        data['senderAddress'] = "tel:+23100000000"
+            # first data value for JSON
+            data = {}
+            data['address'] = 'tel:+' + phone
+            #data['address'] = 'tel:+23177'
+            data['senderName'] = 'ACCESSBANK'
+            data['senderAddress'] = "tel:+23100000000"
 
-        # Json data value
-        data_msg = {}
-        data_msg['message'] = msg
+            # Json data value
+            data_msg = {}
+            data_msg['message'] = msg
 
-        #Add phone numbers ,sender name , sender address to the message
-        data['outboundSMSTextMessage'] = data_msg
+            #Add phone numbers ,sender name , sender address to the message
+            data['outboundSMSTextMessage'] = data_msg
 
-        # Add the first part of the message to the final outboundSMSMessageRequest message
-        data_final = {}
-        data_final['outboundSMSMessageRequest'] = data
-        json_data_final = json.dumps(data_final)
+            # Add the first part of the message to the final outboundSMSMessageRequest message
+            data_final = {}
+            data_final['outboundSMSMessageRequest'] = data
+            json_data_final = json.dumps(data_final)
 
-        print(json_data_final)
+            #print(json_data_final)
+            header = {
+                        "Authorization": "Bearer MCUbVN3BnnVakzjEoDwejPqDBduJ",
+                        "Content-Type": "application/json"
+                     }
 
-        body = {
-            "outboundSMSMessageRequest": {
-                "address": "tel:+231881551966",
-                "senderName": "Accessbank",
-                "senderAddress": "tel:+23100000000",
-                "outboundSMSTextMessage": {
-                    "message": "Hello, this is a test from Eric Malm with Orange API 3"
-                }
-            }
-        }
+            response = requests.post(url, json_data_final, headers=header)
 
-        header = {
-                    "Authorization": "Bearer MCUbVN3BnnVakzjEoDwejPqDBduJ",
-                    "Content-Type": "application/json"
-                 }
+            if response.status_code == 201:
 
-        response = requests.post(url, json_data_final, headers=header)
+                #print(response.text)
+                resp_text = json.loads(response.text)
+                resource_url = resp_text['outboundSMSMessageRequest']['resourceURL']
+                resource_id = resource_url[-36:]
+                print("Message Delivered for Phone:" + phone + " with resource Id: " + resource_id)
 
-        print(response.text)
-        if response.status_code == '201':
-            print("Message Delivered")
-        else:
-            print("Status code: ", response.status_code)
-            
-        #print("Printing Entire Post Request")
-        #print(response.json())
+                #update the export SMS table
+                dbConfig.deliver_message(row,resource_id)
+            else:
+                print("Delivery failed Status code: ", response.status_code)
 
-except ConnectionError as con_error:
-        print('connecton issue: ' + con_error)
-finally:
-        if client:
-                #print "==client.state====", client.state
-                #client.disconnect()
-                #print "==client.state====", client.state
-                print ('this is the end of the code ')
-        else:
-                print ('Connedction to SMS Gateway Failed')
+                logging.info('Delivery failed: response code:{} - phone:{}'.format(response.status_code, phone))
+
+except Exception as exception:
+    assert type(exception).__name__ == 'NameError'
+    assert exception.__class__.__name__ == 'NameError'
+    assert exception.__class__.__qualname__ == 'NameError'
