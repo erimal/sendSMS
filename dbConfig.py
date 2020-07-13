@@ -1,28 +1,23 @@
-import pyodbc
+import mysql.connector
 import settings
 from datetime import datetime
 import pandas as pd
 
-server = settings.DB_SERVER
-database = settings.DB_DATABASE
-username = settings.DB_USERNAME
-password = settings.DB_PASSWORD
-
-# connect to DB tru ODBC driver
-conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+
-                      server+';DATABASE='+
-                      database+';UID='+username+';PWD='+ password)
+# connect to DB
+conn = mysql.connector.connect(
+  host=settings.DB_SERVER,
+  user=settings.DB_USERNAME,
+  password=settings.DB_PASSWORD,
+  database=settings.DB_DATABASE
+)
+cursor = conn.cursor()
 
 def read_messages():
     SQL_Query = pd.read_sql_query(
-        '''SELECT id,
-            MobileNumber,
-            MessageToSend,
-            DateCreated 
-            FROM datalinx.dbo.exportsms where provider=2''', conn
+        '''select id,mobilenumber,message,datecreated from smsimported where sent=0 and provider=2''', conn
         )
 
-    df = pd.DataFrame(SQL_Query, columns=['id', 'MobileNumber', 'MessageToSend', 'DateCreated'])
+    df = pd.DataFrame(SQL_Query, columns=['id', 'mobilenumber', 'message', 'datecreated'])
     #print(df)
     return df
 
@@ -30,16 +25,24 @@ def deliver_message(r,resource_id):
     date_sent = datetime.today().strftime('%Y-%m-%d')
 
     # update the exportSMS table
-    cursor = conn.cursor()
-    SQL_u = f"update datalinx.dbo.exportsms set DateSent='{date_sent}', SmsSent = 1 where id={r['id']}"
+    SQL_u = f"update smsimported set datesent='{date_sent}', sent = 1 , attempt = 1 where id={r['id']}"
     cursor.execute(SQL_u)
     conn.commit()
 
     #insert into the SMSDelivery date
-    SQL_i = "insert into datalinx.dbo.SMSDelivery (id, MessageId, MobileNumber,Text,TransactionDate, DateSubmitted, provider) " \
-          f"values('{r['id']}', '{resource_id}', '{r['MobileNumber']}', '{r['MessageToSend']}', '{r['DateCreated']}', getdate(), '2')"
+    SQL_i = "insert into smsdelivered (smsimported_id, messageId, mobilenumber,message, DateSubmitted, provider) " \
+          f"values('{r['id']}', '{resource_id}', '{r['mobilenumber']}', '{r['message']}', '{r['datecreated']}', '2')"
+    #print("SQL to insert: " + SQL_i)
     cursor.execute(SQL_i)
     conn.commit()
 
-def fail_message(id):
-    cursor.execute ("update datalinx.dbo.exportsms set datesent='2020-07-10', smsSent = 1 where id=" + id)
+# def fail_message(id):
+#     cursor.execute ("update datalinx.dbo.exportsms set datesent='2020-07-10', smsSent = 1 where id=" + id)
+
+def add_sms(r):
+    datecreated = datetime.today().strftime('%Y-%m-%d')
+    SQL_i = "insert into smsimported (other_id,	mobilenumber, message,datecreated,sent,attempt,provider) " \
+            f"values('{r['id']}', '{r['phone']}', '{r['text']}', '{datecreated}','0','0', '2')"
+    # print("SQL to insert: " + SQL_i)
+    cursor.execute(SQL_i)
+    conn.commit()

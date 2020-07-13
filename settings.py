@@ -6,9 +6,9 @@ SMS_SYSTEM_PASSWORD= 'mytestpassowrd'
 
 #DB Settings
 
-DB_SERVER = '192.168.100.8'
-DB_DATABASE = 'datalinx'
-DB_USERNAME = 'sa'
+DB_SERVER = 'localhost'
+DB_DATABASE = 'sms'
+DB_USERNAME = 'erimal'
 DB_PASSWORD = 'Turniphair!30'
 
 # Log file

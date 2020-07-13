@@ -18,8 +18,8 @@ logging.basicConfig(format='Date-Time : %(asctime)s : %(message)s',
 
 try:
         for index, row in df.iterrows():
-            phone = row['MobileNumber']
-            msg = row['MessageToSend']
+            phone = row['mobilenumber']
+            msg = row['message']
 
             # first data value for JSON
             data = {}
@@ -54,10 +54,10 @@ try:
                 resp_text = json.loads(response.text)
                 resource_url = resp_text['outboundSMSMessageRequest']['resourceURL']
                 resource_id = resource_url[-36:]
-                print("Message Delivered for Phone:" + phone + " with resource Id: " + resource_id)
+                print("Message Delivered to Phone:" + phone + " with resource Id: " + resource_id)
 
                 #update the export SMS table
-                dbConfig.deliver_message(row,resource_id)
+                dbConfig.deliver_message(row, resource_id)
             else:
                 print("Delivery failed Status code: ", response.status_code)
 
