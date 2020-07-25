@@ -3,7 +3,7 @@ import pandas as pd
 import dbConfig
 
 def csvReadme():
-    df= pd.read_csv('upload/DayRepayment_new.csv')
+    df= pd.read_csv('upload/DayRepayment_new1.csv')
     for index, row in df.iterrows():
         id = row['id']
         phone = row['phone']

@@ -5,5 +5,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="csvRW" />
+    <orderEntry type="module" module-name="uploadSMS" />
+    <orderEntry type="module" module-name="docApp" />
+    <orderEntry type="module" module-name="simple-file-upload" />
+    <orderEntry type="module" module-name="mysite" />
+    <orderEntry type="module" module-name="freeCodeGram" />
   </component>
 </module>

@@ -25,7 +25,7 @@ try:
             data = {}
             data['address'] = 'tel:+' + phone
             #data['address'] = 'tel:+23177'
-            data['senderName'] = 'ACCESSBANK'
+            data['senderName'] = 'AccessBank'
             data['senderAddress'] = "tel:+23100000000"
 
             # Json data value
@@ -47,16 +47,15 @@ try:
                      }
 
             response = requests.post(url, json_data_final, headers=header)
+            #print(response.text)
 
             if response.status_code == 201:
-
-                #print(response.text)
                 resp_text = json.loads(response.text)
                 resource_url = resp_text['outboundSMSMessageRequest']['resourceURL']
                 resource_id = resource_url[-36:]
                 print("Message Delivered to Phone:" + phone + " with resource Id: " + resource_id)
 
-                #update the export SMS table
+                #update the imported and delivery SMS table
                 dbConfig.deliver_message(row, resource_id)
             else:
                 print("Delivery failed Status code: ", response.status_code)

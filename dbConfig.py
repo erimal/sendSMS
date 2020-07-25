@@ -14,7 +14,7 @@ cursor = conn.cursor()
 
 def read_messages():
     SQL_Query = pd.read_sql_query(
-        '''select id,mobilenumber,message,datecreated from smsimported where sent=0 and provider=2''', conn
+        '''select id,mobilenumber,message,datecreated from uploadapp_smsimported where sent=0 and provider=2''', conn
         )
 
     df = pd.DataFrame(SQL_Query, columns=['id', 'mobilenumber', 'message', 'datecreated'])
@@ -22,16 +22,16 @@ def read_messages():
     return df
 
 def deliver_message(r,resource_id):
-    date_sent = datetime.today().strftime('%Y-%m-%d')
+    date_sent = datetime.today() #.strftime('%Y-%m-%d')
 
-    # update the exportSMS table
-    SQL_u = f"update smsimported set datesent='{date_sent}', sent = 1 , attempt = 1 where id={r['id']}"
+    # update the import table
+    SQL_u = f"update uploadapp_smsimported set datesent='{date_sent}', sent = 1 , attempt = 1 where id={r['id']}"
     cursor.execute(SQL_u)
     conn.commit()
 
     #insert into the SMSDelivery date
-    SQL_i = "insert into smsdelivered (smsimported_id, messageId, mobilenumber,message, DateSubmitted, provider) " \
-          f"values('{r['id']}', '{resource_id}', '{r['mobilenumber']}', '{r['message']}', '{r['datecreated']}', '2')"
+    SQL_i = "insert into uploadapp_smsdelivered (smsimported_id, messageId, mobilenumber,message, datesubmitted, provider,delivered,user_id) " \
+          f"values('{r['id']}', '{resource_id}', '{r['mobilenumber']}', '{r['message']}', '{date_sent}', '2','0','1')"
     #print("SQL to insert: " + SQL_i)
     cursor.execute(SQL_i)
     conn.commit()
