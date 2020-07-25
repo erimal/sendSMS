@@ -7,7 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/../freeCodeGram/.idea/freeCodeGram.iml" filepath="$PROJECT_DIR$/../freeCodeGram/.idea/freeCodeGram.iml" />
       <module fileurl="file://$PROJECT_DIR$/../mysite/.idea/mysite.iml" filepath="$PROJECT_DIR$/../mysite/.idea/mysite.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sendSMS.iml" filepath="$PROJECT_DIR$/.idea/sendSMS.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../simple-file-upload/.idea/simple-file-upload.iml" filepath="$PROJECT_DIR$/../simple-file-upload/.idea/simple-file-upload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../old-simple-file-upload/.idea/simple-file-upload.iml" filepath="$PROJECT_DIR$/../old-simple-file-upload/.idea/simple-file-upload.iml" />
       <module fileurl="file://$PROJECT_DIR$/../uploadSMS/.idea/uploadSMS.iml" filepath="$PROJECT_DIR$/../uploadSMS/.idea/uploadSMS.iml" />
     </modules>
   </component>

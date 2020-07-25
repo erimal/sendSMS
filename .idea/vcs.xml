@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../docApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../old-simple-file-upload" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../simple-file-upload" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../uploadSMS" vcs="Git" />
   </component>

@@ -10,5 +10,6 @@
     <orderEntry type="module" module-name="simple-file-upload" />
     <orderEntry type="module" module-name="mysite" />
     <orderEntry type="module" module-name="freeCodeGram" />
+    <orderEntry type="module" module-name="simple-file-upload" />
   </component>
 </module>
