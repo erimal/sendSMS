@@ -2,8 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../docApp" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../old-simple-file-upload" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../DjangoRestApi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../beepay" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../momopay" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../simple-django-login" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../simple-file-upload" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../uploadSMS" vcs="Git" />
   </component>

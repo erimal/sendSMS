@@ -4,12 +4,16 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="csvRW" />
     <orderEntry type="module" module-name="uploadSMS" />
-    <orderEntry type="module" module-name="docApp" />
-    <orderEntry type="module" module-name="simple-file-upload" />
     <orderEntry type="module" module-name="mysite" />
     <orderEntry type="module" module-name="freeCodeGram" />
-    <orderEntry type="module" module-name="simple-file-upload" />
+    <orderEntry type="module" module-name="uploadSMS" />
+    <orderEntry type="module" module-name="momopay" />
+    <orderEntry type="module" module-name="DjangoRestApi" />
+    <orderEntry type="module" module-name="freeCodeGram" />
+    <orderEntry type="module" module-name="freeCodeGram" />
+    <orderEntry type="module" module-name="freeCodeGram" />
+    <orderEntry type="module" module-name="beepay" />
+    <orderEntry type="module" module-name="simple-django-login" />
   </component>
 </module>

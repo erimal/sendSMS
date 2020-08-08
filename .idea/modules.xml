@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../csvRW/.idea/csvRW.iml" filepath="$PROJECT_DIR$/../csvRW/.idea/csvRW.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../docApp/.idea/docApp.iml" filepath="$PROJECT_DIR$/../docApp/.idea/docApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DjangoRestApi/.idea/DjangoRestApi.iml" filepath="$PROJECT_DIR$/../DjangoRestApi/.idea/DjangoRestApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../beepay/.idea/beepay.iml" filepath="$PROJECT_DIR$/../beepay/.idea/beepay.iml" />
       <module fileurl="file://$PROJECT_DIR$/../freeCodeGram/.idea/freeCodeGram.iml" filepath="$PROJECT_DIR$/../freeCodeGram/.idea/freeCodeGram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../momopay/.idea/momopay.iml" filepath="$PROJECT_DIR$/../momopay/.idea/momopay.iml" />
       <module fileurl="file://$PROJECT_DIR$/../mysite/.idea/mysite.iml" filepath="$PROJECT_DIR$/../mysite/.idea/mysite.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sendSMS.iml" filepath="$PROJECT_DIR$/.idea/sendSMS.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../old-simple-file-upload/.idea/simple-file-upload.iml" filepath="$PROJECT_DIR$/../old-simple-file-upload/.idea/simple-file-upload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../simple-django-login/.idea/simple-django-login.iml" filepath="$PROJECT_DIR$/../simple-django-login/.idea/simple-django-login.iml" />
       <module fileurl="file://$PROJECT_DIR$/../uploadSMS/.idea/uploadSMS.iml" filepath="$PROJECT_DIR$/../uploadSMS/.idea/uploadSMS.iml" />
     </modules>
   </component>
