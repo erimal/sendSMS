@@ -9,6 +9,7 @@ from datetime import datetime
 client = None
 url = 'https://api.orange.com/smsmessaging/v1/outbound/tel%3A%2B23100000000/requests'
 df = dbConfig.read_messages()
+token = "Bearer " + dbConfig.get_orange_token('URL')
 
 #Create an error  log file
 file_log = settings.LOG_FILENAME + "_" + (datetime.now().strftime("%Y-%m-%d"))
@@ -41,8 +42,9 @@ try:
             json_data_final = json.dumps(data_final)
 
             #print(json_data_final)
+
             header = {
-                       "Authorization": "Bearer Yelfw2A1p8iw2cyG0TPQdjXO4n8V",
+                       "Authorization": f"{token}",
                         "Content-Type": "application/json"
                      }
 

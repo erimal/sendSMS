@@ -6,6 +6,8 @@ import mysql.connector
 import settings
 from datetime import datetime
 import pandas as pd
+import json
+import requests
 
 # connect to DB
 conn = mysql.connector.connect(
@@ -52,3 +54,26 @@ def add_sms(r):
     print("SQL to insert in add_sms: " + SQL_i)
     cursor.execute(SQL_i)
     conn.commit()
+
+def get_orange_token(url):
+    # url is not in used now, in a future development
+
+    token = ""
+    url = "https://api.orange.com/oauth/v3/token"
+    data = {}
+    data['grant_type'] = "client_credentials"
+
+    header = {
+        "Authorization": "Basic TGxKQVN0QklEdlhkM0J2eEVPRklrMXNjaWJvRmRHMkY6Z3hNQTNWUVpXV3N1a1hBWg==",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept": "application/json"
+    }
+
+    response = requests.post(url, data, headers=header)
+    #print("Reposnse of the Json", response.text)
+    if response.status_code == 200:
+        resp_text = json.loads(response.text)
+        token = resp_text['access_token']
+        print("Orange_token", token)
+
+    return token
