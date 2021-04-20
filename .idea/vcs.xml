@@ -4,6 +4,9 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../DjangoRestApi" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../beepay" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ecommerce" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../eod" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../momocheck" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../momopay" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../simple-django-login" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../simple-file-upload" vcs="Git" />

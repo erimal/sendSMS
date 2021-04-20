@@ -1,8 +1,4 @@
-# #SMS settings
-# SMS_SYSTEM_HOSTNAME = '10'
-# SMS_SYSTEM_PORT = '1234'
-# SMS_SYSTEM_ID = '9876'
-# SMS_SYSTEM_PASSWORD= 'mytestpassowrd'
+# DB connection settings
 #
 # #DB Settings
 

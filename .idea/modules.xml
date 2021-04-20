@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../DjangoRestApi/.idea/DjangoRestApi.iml" filepath="$PROJECT_DIR$/../DjangoRestApi/.idea/DjangoRestApi.iml" />
       <module fileurl="file://$PROJECT_DIR$/../beepay/.idea/beepay.iml" filepath="$PROJECT_DIR$/../beepay/.idea/beepay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ecommerce/.idea/ecommerce.iml" filepath="$PROJECT_DIR$/../ecommerce/.idea/ecommerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../eod/.idea/eod.iml" filepath="$PROJECT_DIR$/../eod/.idea/eod.iml" />
       <module fileurl="file://$PROJECT_DIR$/../freeCodeGram/.idea/freeCodeGram.iml" filepath="$PROJECT_DIR$/../freeCodeGram/.idea/freeCodeGram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../momocheck/.idea/momocheck.iml" filepath="$PROJECT_DIR$/../momocheck/.idea/momocheck.iml" />
       <module fileurl="file://$PROJECT_DIR$/../momopay/.idea/momopay.iml" filepath="$PROJECT_DIR$/../momopay/.idea/momopay.iml" />
       <module fileurl="file://$PROJECT_DIR$/../mysite/.idea/mysite.iml" filepath="$PROJECT_DIR$/../mysite/.idea/mysite.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sendSMS.iml" filepath="$PROJECT_DIR$/.idea/sendSMS.iml" />

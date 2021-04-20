@@ -13,7 +13,10 @@
     <orderEntry type="module" module-name="freeCodeGram" />
     <orderEntry type="module" module-name="freeCodeGram" />
     <orderEntry type="module" module-name="freeCodeGram" />
-    <orderEntry type="module" module-name="beepay" />
     <orderEntry type="module" module-name="simple-django-login" />
+    <orderEntry type="module" module-name="beepay" />
+    <orderEntry type="module" module-name="ecommerce" />
+    <orderEntry type="module" module-name="momocheck" />
+    <orderEntry type="module" module-name="eod" />
   </component>
 </module>

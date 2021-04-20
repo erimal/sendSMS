@@ -1,3 +1,7 @@
+#This is the DB program to perform CRUD operation
+#
+# author Eric Malm  Date june-2020
+
 import mysql.connector
 import settings
 from datetime import datetime
@@ -41,8 +45,10 @@ def deliver_message(r,resource_id):
 
 def add_sms(r):
     datecreated = datetime.today().strftime('%Y-%m-%d')
-    SQL_i = "insert into smsimported (other_id,	mobilenumber, message,datecreated,sent,attempt,provider) " \
-            f"values('{r['id']}', '{r['phone']}', '{r['text']}', '{datecreated}','0','0', '2')"
-    # print("SQL to insert: " + SQL_i)
+
+    SQL_i = "insert into uploadapp_smsimported (other_id,	mobilenumber, message,datecreated,sent,attempt,provider,user_id) " \
+            f"values('{r['id']}', '{r['phone']}', '{r['text']}', '{datecreated}','0','0', '2','1')"
+
+    print("SQL to insert in add_sms: " + SQL_i)
     cursor.execute(SQL_i)
     conn.commit()
